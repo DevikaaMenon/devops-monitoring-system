@@ -1,7 +1,7 @@
 # Interface Contract
 
-**Version:** 1.0 (draft, waiting for M1/M2/M3 approval)
-**Owner:** M3 · **Reviewers:** M1, M2
+**Version:** 1.0 (draft, waiting for approval from all three)
+**Owner:** Bhavana (M3) · **Drafted by:** Devika (M2) · **Reviewers:** Divyanth (M1), Devika (M2)
 **Task:** T1.2
 
 This file defines every name, port, label and metric that crosses a team member's boundary. Once all three members approve the PR that adds it, the contract is **frozen**. After that, a change needs a PR approved by all three. New items can be added; existing ones are never renamed.
@@ -79,7 +79,7 @@ Dashboards and alert rules filter the application with `app="orders-api"`.
 | node-exporter | headless Service `node-exporter.monitoring`, port `9100` | none |
 
 - Grafana data source **name** `Prometheus`, **UID** `prometheus`. Every dashboard JSON references this UID.
-- Dashboard UIDs: `app-overview` (M1), `k8s-workloads` (M2), `node-platform` (M3).
+- Dashboard UIDs: `app-overview` (Divyanth), `k8s-workloads` (Devika), `node-platform` (Bhavana).
 - Grafana admin password: only in `ansible/group_vars/all/vault.yml` (Ansible Vault). Never committed in plain text.
 
 ## 6. Prometheus scrape jobs
@@ -125,6 +125,6 @@ The plan (`docs/PROJECT_PLAN.md`) was written against Prometheus 2.x. With Prome
 
 | Member | Role | Approved (PR review) | Date |
 |---|---|---|---|
-| M1 | Application & Workload | ☐ | |
-| M2 | Automation & Platform | ☐ | |
-| M3 | Observability | ☐ | |
+| Divyanth (M1) | Application & Workload | ☐ | |
+| Devika (M2) | Automation & Platform | ☐ | |
+| Bhavana (M3) | Observability | ☐ | |
