@@ -1,56 +1,56 @@
-id,title,phase,owner,owner_detail,depends_on,effort,week,optional
-T1.1,"Kickoff, scope freeze and working agreement",P1 Planning,All,All,none,2 h each,1,no
-T1.2,Interface contract (docs/CONTRACT.md),P1 Planning,M3,"M3 (draft), reviewed and approved by M1 and M2",T1.1,3 h,1,no
-T1.3,"Repository, branching and folder skeleton",P1 Planning,M2,M2,T1.1,2 h,1,no
-T1.4,Laptop readiness check,P1 Planning,All,All (each on their own laptop),none,1 h each,1,no
-T2.1,Install the Ansible control node (bootstrap),P2 Provisioning (Ansible),M2,M2,T1.3,3 h,1,no
-T2.2,"Ansible project: config, inventory, variables, Vault",P2 Provisioning (Ansible),M2,M2,T2.1,3 h,1,no
-T2.3,Roles common and docker,P2 Provisioning (Ansible),M2,M2,T2.2,5 h,1,no
-T2.4,"Role k8s_tools + install.yml, rolled out to all three laptops",P2 Provisioning (Ansible),M2,M2 (writes it) · M1 and M3 (run it on their laptops),T2.3,"4 h (M2) + 1 h each (M1, M3)",1,no
-T3.1,Flask application with business endpoints,P3 Application,M1,M1,T1.2,4 h,1,no
-T3.2,Prometheus instrumentation,P3 Application,M1,M1,T3.1,4 h,1,no
-T3.3,"Health, readiness and failure-injection endpoints",P3 Application,M1,M1,T3.1,3 h,1,no
-T3.4,Unit tests,P3 Application,M1,M1,"T3.2, T3.3",3 h,2,no
-T3.5,Load generator,P3 Application,M3,M3,"T1.2 (it only needs the contract, not the code)",3 h,1,no
-T4.1,Dockerfile and .dockerignore,P4 Docker,M1,M1,T3.4,3 h,2,no
-T4.2,"Build, run and verify the container; versioning policy",P4 Docker,M1,M1,"T4.1, T2.3",2 h,2,no
-T4.3,Load the image into Minikube,P4 Docker,M1,M1,"T4.2, T5.1",1 h,2,no
-T5.1,Start and verify the Minikube cluster (manual),P5 Kubernetes,M2,M2,T2.4,2 h,2,no
-T5.2,Namespaces and app ConfigMap,P5 Kubernetes,M1,M1,T5.1,1 h,2,no
-T5.3,"Deployment with replicas, probes, resources and rolling update",P5 Kubernetes,M1,M1,"T5.2, T4.3",4 h,2,no
-T5.4,Service and access verification,P5 Kubernetes,M1,M1,T5.3,2 h,2,no
-T5.5,Load generator inside the cluster,P5 Kubernetes,M3,M3,"T5.4, T3.5",2 h,2,no
-T5.6,Namespace resource management: LimitRange + ResourceQuota,P5 Kubernetes,M2,M2,T5.2,2 h,2,no
-T5.7,(Optional) Horizontal Pod Autoscaler,P5 Kubernetes,M1,M1,"T5.3, metrics-server",2 h,6,yes
-T6.1,Monitoring namespace and Prometheus RBAC,P6 Prometheus,M3,M3,T5.1,2 h,2,no
-T6.2,Prometheus configuration (scrape jobs + service discovery),P6 Prometheus,M3,M3,"T6.1, T1.2",5 h,2,no
-T6.3,Prometheus Deployment and Service,P6 Prometheus,M3,M3,"T6.2, T6.6",3 h,2,no
-T6.4,node-exporter DaemonSet,P6 Prometheus,M3,M3,T6.1,2 h,2,no
-T6.5,kube-state-metrics,P6 Prometheus,M2,M2,T6.1,3 h,2,no
-T6.6,Alert and recording rules,P6 Prometheus,M3,M3,T6.2,3 h,3,no
-T6.7,Validate targets and key PromQL queries,P6 Prometheus,M3,M3,"T6.3–T6.6, T5.5",2 h,3,no
-T7.1,"Grafana Secret, Deployment and Service",P7 Grafana,M2,M2,T6.3,3 h,3,no
-T7.2,Data source and dashboard provisioning,P7 Grafana,M2,M2,T7.1,3 h (includes the dashboards ConfigMap integration that was T7.6),3,no
-T7.3,/ T7.4 / T7.5 The three dashboards (one per member),P7 Grafana,M2,M2,T7.1,3 h (includes the dashboards ConfigMap integration that was T7.6),3,no
-T7.3,Dashboard: Orders API - Application Overview,P7 Grafana,M1,M1,"T7.2, T6.7",5 h,3,no
-T7.4,Dashboard: Kubernetes Workloads,P7 Grafana,M2,M2,"T7.2, T6.5",4 h,3,no
-T7.5,Dashboard: Node & Platform Health,P7 Grafana,M3,M3,"T7.2, T6.4",4 h,3,no
-T8.1,Role minikube_cluster,P8 Ansible automation,M2,M2,"T2.4, T5.1",4 h,4,no
-T8.2,Role app_deploy,P8 Ansible automation,M1,M1,"T5.3–T5.6, T8.1",6 h,4,no
-T8.3,Role monitoring,P8 Ansible automation,M3,M3,"T6.*, T7.1–T7.2, T8.1",6 h,4,no
-T8.4,"Playbooks: deploy.yml, site.yml, teardown.yml",P8 Ansible automation,M2,M2,T8.1–T8.3,3 h,4,no
-T8.5,verify.yml and role verify (automated smoke tests),P8 Ansible automation,M3,M3,"T8.2, T8.3",3 h,4,no
-T8.6,Clean-rebuild and idempotency test on a second laptop,P8 Ansible automation,M1,"M1 (on their own laptop, not M2's)","T8.4, T8.5",2 h,4,no
-T9.1,Test plan and TEST_REPORT template,P9 Testing,M3,M3,T1.2,2 h,5,no
-T9.2,Execute TC-01..TC-06 (cross-test app/Docker/K8s),P9 Testing,M2,M2,IM1,3 h,5,no
-T9.3,Execute TC-07..TC-11 (cross-test monitoring),P9 Testing,M1,M1,IM3,3 h,5,no
-T9.4,Execute TC-14..TC-16 (cross-test Ansible),P9 Testing,M3,M3,IM4,2 h,5,no
-T10.1,Failure-injection script and scenarios,P10 Scenarios,M1,M1,"T3.3, IM3",3 h,5,no
-T10.2,Scaling scenarios (imperative vs declarative),P10 Scenarios,M3,M3,IM4,3 h,5,no
-T10.3,Resource-governance scenarios,P10 Scenarios,M2,M2,"T5.6, IM3",2 h,5,no
-T10.4,Demo runbook and rehearsals,P10 Scenarios,All,All,T10.1–T10.3,3 h each,5,no
-T11.1,Architecture diagrams,P11 Documentation,M3,M3,any,3 h,5,no
-T11.2,Report sections (see plan section 10),P11 Documentation,All,All,any,6 h each,6,no
-T11.3,Slides,P11 Documentation,All,All,any,2 h each,6,no
-T11.4,README quick start and troubleshooting,P11 Documentation,M2,M2,IM4,2 h,5,no
-T11.5,Evidence collection (screenshots named by task/test ID),P11 Documentation,All,All,any,1 h each,6,no
+id,title,phase,owner,name,owner_detail,depends_on,effort,week,optional
+T1.1,"Kickoff, scope freeze and working agreement",P1 Planning,All,Everyone,All,none,2 h each,1,no
+T1.2,Interface contract (docs/CONTRACT.md),P1 Planning,M3,Bhavana,"M3 (draft), reviewed and approved by M1 and M2",T1.1,3 h,1,no
+T1.3,"Repository, branching and folder skeleton",P1 Planning,M2,Devika,M2,T1.1,2 h,1,no
+T1.4,Laptop readiness check,P1 Planning,All,Everyone,All (each on their own laptop),none,1 h each,1,no
+T2.1,Install the Ansible control node (bootstrap),P2 Provisioning (Ansible),M2,Devika,M2,T1.3,3 h,1,no
+T2.2,"Ansible project: config, inventory, variables, Vault",P2 Provisioning (Ansible),M2,Devika,M2,T2.1,3 h,1,no
+T2.3,Roles common and docker,P2 Provisioning (Ansible),M2,Devika,M2,T2.2,5 h,1,no
+T2.4,"Role k8s_tools + install.yml, rolled out to all three laptops",P2 Provisioning (Ansible),M2,Devika,M2 (writes it) · M1 and M3 (run it on their laptops),T2.3,"4 h (M2) + 1 h each (M1, M3)",1,no
+T3.1,Flask application with business endpoints,P3 Application,M1,Divyanth,M1,T1.2,4 h,1,no
+T3.2,Prometheus instrumentation,P3 Application,M1,Divyanth,M1,T3.1,4 h,1,no
+T3.3,"Health, readiness and failure-injection endpoints",P3 Application,M1,Divyanth,M1,T3.1,3 h,1,no
+T3.4,Unit tests,P3 Application,M1,Divyanth,M1,"T3.2, T3.3",3 h,2,no
+T3.5,Load generator,P3 Application,M3,Bhavana,M3,"T1.2 (it only needs the contract, not the code)",3 h,1,no
+T4.1,Dockerfile and .dockerignore,P4 Docker,M1,Divyanth,M1,T3.4,3 h,2,no
+T4.2,"Build, run and verify the container; versioning policy",P4 Docker,M1,Divyanth,M1,"T4.1, T2.3",2 h,2,no
+T4.3,Load the image into Minikube,P4 Docker,M1,Divyanth,M1,"T4.2, T5.1",1 h,2,no
+T5.1,Start and verify the Minikube cluster (manual),P5 Kubernetes,M2,Devika,M2,T2.4,2 h,2,no
+T5.2,Namespaces and app ConfigMap,P5 Kubernetes,M1,Divyanth,M1,T5.1,1 h,2,no
+T5.3,"Deployment with replicas, probes, resources and rolling update",P5 Kubernetes,M1,Divyanth,M1,"T5.2, T4.3",4 h,2,no
+T5.4,Service and access verification,P5 Kubernetes,M1,Divyanth,M1,T5.3,2 h,2,no
+T5.5,Load generator inside the cluster,P5 Kubernetes,M3,Bhavana,M3,"T5.4, T3.5",2 h,2,no
+T5.6,Namespace resource management: LimitRange + ResourceQuota,P5 Kubernetes,M2,Devika,M2,T5.2,2 h,2,no
+T5.7,(Optional) Horizontal Pod Autoscaler,P5 Kubernetes,M1,Divyanth,M1,"T5.3, metrics-server",2 h,6,yes
+T6.1,Monitoring namespace and Prometheus RBAC,P6 Prometheus,M3,Bhavana,M3,T5.1,2 h,2,no
+T6.2,Prometheus configuration (scrape jobs + service discovery),P6 Prometheus,M3,Bhavana,M3,"T6.1, T1.2",5 h,2,no
+T6.3,Prometheus Deployment and Service,P6 Prometheus,M3,Bhavana,M3,"T6.2, T6.6",3 h,2,no
+T6.4,node-exporter DaemonSet,P6 Prometheus,M3,Bhavana,M3,T6.1,2 h,2,no
+T6.5,kube-state-metrics,P6 Prometheus,M2,Devika,M2,T6.1,3 h,2,no
+T6.6,Alert and recording rules,P6 Prometheus,M3,Bhavana,M3,T6.2,3 h,3,no
+T6.7,Validate targets and key PromQL queries,P6 Prometheus,M3,Bhavana,M3,"T6.3–T6.6, T5.5",2 h,3,no
+T7.1,"Grafana Secret, Deployment and Service",P7 Grafana,M2,Devika,M2,T6.3,3 h,3,no
+T7.2,Data source and dashboard provisioning,P7 Grafana,M2,Devika,M2,T7.1,3 h (includes the dashboards ConfigMap integration that was T7.6),3,no
+T7.3,/ T7.4 / T7.5 The three dashboards (one per member),P7 Grafana,M2,Devika,M2,T7.1,3 h (includes the dashboards ConfigMap integration that was T7.6),3,no
+T7.3,Dashboard: Orders API - Application Overview,P7 Grafana,M1,Divyanth,M1,"T7.2, T6.7",5 h,3,no
+T7.4,Dashboard: Kubernetes Workloads,P7 Grafana,M2,Devika,M2,"T7.2, T6.5",4 h,3,no
+T7.5,Dashboard: Node & Platform Health,P7 Grafana,M3,Bhavana,M3,"T7.2, T6.4",4 h,3,no
+T8.1,Role minikube_cluster,P8 Ansible automation,M2,Devika,M2,"T2.4, T5.1",4 h,4,no
+T8.2,Role app_deploy,P8 Ansible automation,M1,Divyanth,M1,"T5.3–T5.6, T8.1",6 h,4,no
+T8.3,Role monitoring,P8 Ansible automation,M3,Bhavana,M3,"T6.*, T7.1–T7.2, T8.1",6 h,4,no
+T8.4,"Playbooks: deploy.yml, site.yml, teardown.yml",P8 Ansible automation,M2,Devika,M2,T8.1–T8.3,3 h,4,no
+T8.5,verify.yml and role verify (automated smoke tests),P8 Ansible automation,M3,Bhavana,M3,"T8.2, T8.3",3 h,4,no
+T8.6,Clean-rebuild and idempotency test on a second laptop,P8 Ansible automation,M1,Divyanth,"M1 (on their own laptop, not M2's)","T8.4, T8.5",2 h,4,no
+T9.1,Test plan and TEST_REPORT template,P9 Testing,M3,Bhavana,M3,T1.2,2 h,5,no
+T9.2,Execute TC-01..TC-06 (cross-test app/Docker/K8s),P9 Testing,M2,Devika,M2,IM1,3 h,5,no
+T9.3,Execute TC-07..TC-11 (cross-test monitoring),P9 Testing,M1,Divyanth,M1,IM3,3 h,5,no
+T9.4,Execute TC-14..TC-16 (cross-test Ansible),P9 Testing,M3,Bhavana,M3,IM4,2 h,5,no
+T10.1,Failure-injection script and scenarios,P10 Scenarios,M1,Divyanth,M1,"T3.3, IM3",3 h,5,no
+T10.2,Scaling scenarios (imperative vs declarative),P10 Scenarios,M3,Bhavana,M3,IM4,3 h,5,no
+T10.3,Resource-governance scenarios,P10 Scenarios,M2,Devika,M2,"T5.6, IM3",2 h,5,no
+T10.4,Demo runbook and rehearsals,P10 Scenarios,All,Everyone,All,T10.1–T10.3,3 h each,5,no
+T11.1,Architecture diagrams,P11 Documentation,M3,Bhavana,M3,any,3 h,5,no
+T11.2,Report sections (see plan section 10),P11 Documentation,All,Everyone,All,any,6 h each,6,no
+T11.3,Slides,P11 Documentation,All,Everyone,All,any,2 h each,6,no
+T11.4,README quick start and troubleshooting,P11 Documentation,M1,Divyanth,M1 (moved from M2 to balance hours),IM4,2 h,5,no
+T11.5,Evidence collection (screenshots named by task/test ID),P11 Documentation,All,Everyone,All,any,1 h each,6,no

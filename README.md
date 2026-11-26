@@ -7,17 +7,17 @@ orders-api (Flask) → Docker image → Kubernetes (Minikube) → Prometheus →
                          ↑ everything installed, deployed and verified by Ansible ↑
 ```
 
-> **Status:** Phase 1 (planning and repo setup). Nothing is deployable yet. The full plan is in [docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md).
+> **Status:** Phase 1 (planning and repo setup). Nothing is deployable yet. **What to do next: [PLAN.md](PLAN.md)** (a checklist per person). Step-by-step details: [docs/reference/detailed-plan.md](docs/reference/detailed-plan.md).
 
 ## Repository layout
 
 | Path | Contents | Owner |
 |---|---|---|
-| `app/` | Flask app, tests, Dockerfile | M1 |
-| `k8s/app/` | Application manifests (Deployment, Service, ConfigMap, quota, loadgen) | M1 (quota: M2, loadgen: M3) |
-| `k8s/monitoring/` | Prometheus, node-exporter, kube-state-metrics, Grafana | M3 / M2 |
-| `grafana/dashboards/` | Provisioned dashboard JSON (one per member) | M1, M2, M3 |
-| `ansible/` | Inventory, variables, Vault, roles, playbooks | M2 (structure) + one role per member |
+| `app/` | Flask app, tests, Dockerfile | Divyanth |
+| `k8s/app/` | Application manifests (Deployment, Service, ConfigMap, quota, loadgen) | Divyanth (quota: Devika, loadgen: Bhavana) |
+| `k8s/monitoring/` | Prometheus, node-exporter, kube-state-metrics, Grafana | Bhavana / Devika |
+| `grafana/dashboards/` | Provisioned dashboard JSON (one per member) | all three |
+| `ansible/` | Inventory, variables, Vault, roles, playbooks | Devika (structure) + one role per member |
 | `scripts/` | Bootstrap, readiness check, chaos and scaling helpers | various |
 | `docs/` | Plan, contract, test report, diagrams, screenshots, report | all |
 
@@ -25,11 +25,11 @@ orders-api (Flask) → Docker image → Kubernetes (Minikube) → Prometheus →
 
 ```bash
 git clone https://github.com/DevikaaMenon/devops-monitoring-system.git && cd devops-monitoring-system
-./scripts/check-env.sh "<your name>" <M1|M2|M3>    # T1.4: paste the row into docs/environment.md
+./scripts/check-env.sh "<your name>" <M1|M2|M3>    # T1.4 (Divyanth M1, Devika M2, Bhavana M3): paste the row into docs/environment.md
 ```
 
 Then read, in order:
-1. [docs/PROJECT_PLAN.md](docs/PROJECT_PLAN.md): Sections 1–3 (scope, architecture, stack) and your own tasks in Section 5
+1. [PLAN.md](PLAN.md): find your name and your task list
 2. [docs/CONTRACT.md](docs/CONTRACT.md): approve it in its PR
 3. [CONTRIBUTING.md](CONTRIBUTING.md): branches, reviews, file ownership
 
@@ -50,8 +50,8 @@ ansible-playbook deploy.yml --ask-vault-pass    # cluster + app + monitoring + v
 
 ## Team
 
-| Role | Member |
+| Role | Name |
 |---|---|
-| M1 Application & Workload | _TBD at kickoff_ |
-| M2 Automation & Platform | _TBD at kickoff_ |
-| M3 Observability | _TBD at kickoff_ |
+| M1 Application & Workload | Divyanth |
+| M2 Automation & Platform | Devika |
+| M3 Observability | Bhavana |
