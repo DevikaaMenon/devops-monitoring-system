@@ -1,5 +1,11 @@
 # DevOps Monitoring Platform: Project 31 Implementation Blueprint
 
+> **This is the detailed reference.** For your day-to-day checklist, use [PLAN.md](../../PLAN.md).
+>
+> **Team:** M1 = **Divyanth** (Application & Workload) · M2 = **Devika** (Automation & Platform) · M3 = **Bhavana** (Observability)
+>
+> **Changes since v1:** T11.4 (README) moved from M2 to M1 to balance hours (all three ≈ 64 h). Version pins updated to the releases in [docs/CONTRACT.md](../CONTRACT.md).
+
 > Status: **plan only**. Nothing described here has been built yet. Every "expected output" is what you should see once the task is done correctly.
 
 **Working names used throughout this plan** (agree on them in T1.2 and then don't change them):
@@ -11,7 +17,7 @@
 | Monitoring namespace | `monitoring` |
 | App NodePort / Prometheus NodePort / Grafana NodePort | `30080` / `30090` / `30030` |
 | Image tag | `orders-api:1.0.0` (never `latest`) |
-| Team | **M1** (Application & Workload owner), **M2** (Automation & Platform owner), **M3** (Observability owner) |
+| Team | **M1 Divyanth** (Application & Workload), **M2 Devika** (Automation & Platform), **M3 Bhavana** (Observability) |
 
 ---
 

@@ -33,13 +33,13 @@ Uses the route template as the endpoint label to keep cardinality bounded.
 
 ## File ownership
 
-Each file has one owner (plan Section 5.3). To change someone else's file, open a PR and request their review.
+Each file has one owner. Team: Divyanth = M1, Devika = M2, Bhavana = M3. To change someone else's file, open a PR and request their review.
 
 | Area | Owner |
 |---|---|
-| `app/`, `k8s/app/{00,10,20,30}-*`, `ansible/roles/app_deploy/`, `grafana/dashboards/app-overview.json`, `scripts/chaos.sh` | M1 |
-| `scripts/bootstrap.sh`, `ansible/` (structure, playbooks, `common`, `docker`, `k8s_tools`, `minikube_cluster`), `k8s/app/05-limits-quota.yaml`, kube-state-metrics, Grafana manifests, `grafana/dashboards/k8s-workloads.json`, `README.md` | M2 |
-| `docs/CONTRACT.md`, `scripts/loadgen.sh`, `scripts/scale.sh`, `k8s/app/40-loadgen.yaml`, Prometheus + node-exporter manifests, `ansible/roles/{monitoring,verify}/`, `grafana/dashboards/node-platform.json`, `docs/TEST_REPORT.md`, `docs/diagrams/` | M3 |
+| `app/`, `k8s/app/{00,10,20,30}-*`, `ansible/roles/app_deploy/`, `grafana/dashboards/app-overview.json`, `scripts/chaos.sh`, `README.md` | **Divyanth** (M1) |
+| `scripts/bootstrap.sh`, `ansible/` (structure, playbooks, `common`, `docker`, `k8s_tools`, `minikube_cluster`), `k8s/app/05-limits-quota.yaml`, kube-state-metrics, Grafana manifests, `grafana/dashboards/k8s-workloads.json` | **Devika** (M2) |
+| `docs/CONTRACT.md`, `scripts/loadgen.sh`, `scripts/scale.sh`, `k8s/app/40-loadgen.yaml`, Prometheus + node-exporter manifests, `ansible/roles/{monitoring,verify}/`, `grafana/dashboards/node-platform.json`, `docs/TEST_REPORT.md`, `docs/diagrams/` | **Bhavana** (M3) |
 
 ## Contract changes
 

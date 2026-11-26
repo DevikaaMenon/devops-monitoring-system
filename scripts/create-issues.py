@@ -18,9 +18,9 @@ APPLY = "--apply" in sys.argv
 ROOT = Path(__file__).resolve().parent.parent
 
 LABELS = {
-    "owner:M1": ("1f6fb2", "Application & Workload"),
-    "owner:M2": ("6b47b8", "Automation & Platform"),
-    "owner:M3": ("0f7a5a", "Observability"),
+    "owner:M1": ("1f6fb2", "Divyanth: Application & Workload"),
+    "owner:M2": ("6b47b8", "Devika: Automation & Platform"),
+    "owner:M3": ("0f7a5a", "Bhavana: Observability"),
     "owner:All": ("5a6577", "Whole team"),
     "optional": ("cccccc", "Only after all mandatory items pass"),
 }
@@ -63,12 +63,12 @@ def main():
         title = f"{r['id']}: {r['title']}"
         body = (
             f"**Phase:** {r['phase']}  \n"
-            f"**Owner:** {r['owner_detail']}  \n"
+            f"**Owner:** {r['name']} ({r['owner_detail']})  \n"
             f"**Depends on:** {r['depends_on']}  \n"
             f"**Effort (est.):** {r['effort']}  \n"
             f"**Planned week:** {r['week']}\n\n"
             f"Steps, files, verification and evidence: see **{r['id']}** in "
-            f"[`docs/PROJECT_PLAN.md`](../blob/main/docs/PROJECT_PLAN.md).\n\n"
+            f"[`docs/reference/detailed-plan.md`](../blob/main/docs/reference/detailed-plan.md).\n\n"
             f"### Done when\n"
             f"- [ ] Steps completed as described in the plan\n"
             f"- [ ] Verification passed\n"

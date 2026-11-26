@@ -9,9 +9,9 @@ Copy this file to `YYYY-MM-DD-kickoff.md`, fill it in during the meeting, and co
 
 | Role | Member |
 |---|---|
-| M1 Application & Workload | |
-| M2 Automation & Platform | |
-| M3 Observability | |
+| M1 Application & Workload | Divyanth |
+| M2 Automation & Platform | Devika |
+| M3 Observability | Bhavana |
 
 ## 2. Scope freeze (plan Section 1.7)
 
@@ -38,19 +38,20 @@ Copy this file to `YYYY-MM-DD-kickoff.md`, fill it in during the meeting, and co
 
 - [ ] `docs/CONTRACT.md` walked through together
 - Requested changes:
-- Approved by: ☐ M1 ☐ M2 ☐ M3
+- Approved by: ☐ Divyanth ☐ Devika ☐ Bhavana
 
 ## 6. Actions
 
 | Action | Owner | Due |
 |---|---|---|
-| Run `scripts/check-env.sh` and add the row to `docs/environment.md` | All | |
-| Accept GitHub invite; confirm `git clone` works | M1, M3 | |
-| Create issues + project board (`scripts/create-issues.py --apply`) | M2 | |
-| Start T2.1 (bootstrap Ansible) | M2 | |
-| Start T3.1 (Flask app) | M1 | |
-| Start T3.5 (local loadgen) | M3 | |
+| Run `scripts/check-env.sh` and add the row to `docs/environment.md` | Divyanth, Bhavana | |
+| Accept GitHub invite; confirm `git clone` works | Divyanth, Bhavana | |
+| Review/finalise the contract (PR #1) and collect approvals | Bhavana | |
+| Create issues + project board (`scripts/create-issues.py --apply`) | Devika | |
+| Start T2.1 (bootstrap Ansible) | Devika | |
+| Start T3.1 (Flask app) | Divyanth | |
+| Start T3.5 (local loadgen) | Bhavana | |
 
 ## Sign-off
 
-☐ M1 ☐ M2 ☐ M3
+☐ Divyanth ☐ Devika ☐ Bhavana
