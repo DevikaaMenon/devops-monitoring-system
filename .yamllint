@@ -1,0 +1,23 @@
+# Run: yamllint k8s/ ansible/
+extends: default
+
+ignore: |
+  k8s/rendered/
+  ansible/group_vars/all/vault.yml
+
+rules:
+  line-length:
+    max: 160
+    level: warning
+  document-start: disable
+  truthy:
+    allowed-values: ["true", "false", "yes", "no"]
+    check-keys: false
+  comments:
+    min-spaces-from-content: 1
+  comments-indentation: disable
+  braces:
+    max-spaces-inside: 1
+  indentation:
+    spaces: 2
+    indent-sequences: consistent

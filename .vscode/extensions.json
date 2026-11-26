@@ -1,0 +1,11 @@
+{
+  "recommendations": [
+    "redhat.vscode-yaml",
+    "redhat.ansible",
+    "ms-kubernetes-tools.vscode-kubernetes-tools",
+    "ms-python.python",
+    "ms-azuretools.vscode-docker",
+    "bierner.markdown-mermaid",
+    "editorconfig.editorconfig"
+  ]
+}
