@@ -24,7 +24,7 @@ orders-api (Flask) → Docker image → Kubernetes (Minikube) → Prometheus →
 ## Getting started (Phase 1)
 
 ```bash
-git clone <repo-url> && cd devops-monitoring-platform
+git clone https://github.com/DevikaaMenon/devops-monitoring-system.git && cd devops-monitoring-system
 ./scripts/check-env.sh "<your name>" <M1|M2|M3>    # T1.4: paste the row into docs/environment.md
 ```
 
