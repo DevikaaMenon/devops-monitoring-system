@@ -68,7 +68,7 @@ def main():
             f"**Effort (est.):** {r['effort']}  \n"
             f"**Planned week:** {r['week']}\n\n"
             f"Steps, files, verification and evidence: see **{r['id']}** in "
-            f"[`docs/reference/detailed-plan.md`](../blob/main/docs/reference/detailed-plan.md).\n\n"
+            f"[`docs/guide.md`](../blob/main/docs/guide.md).\n\n"
             f"### Done when\n"
             f"- [ ] Steps completed as described in the plan\n"
             f"- [ ] Verification passed\n"
